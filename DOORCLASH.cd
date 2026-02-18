@@ -3,20 +3,42 @@ import pygame
 
 pygame.init()
 
-screen_width = 1200
-screen_height = 600
+# Set up the display
+display_width = 800
+display_height = 600
+screen = pygame.display.set_mode((display_width, display_height))
+pygame. display.set_caption('Start Page')
 
-game_state = "playing"  
+# Load the image and convert it for optimal performance
+# Use .convert_alpha() if your image has transparency
+image_surface = pygame.image.load('image (2).png').convert_alpha() 
 
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("My Pygame Window")
+# Get the rectangle of the image to help with positioning
+image_rect = image_surface.get_rect()
+# Set the center of the image to the center of the screen
+image_rect.center = (display_width // 2, display_height // 2)
 
-class character(pygame.sprite.Sprite):
-    def __init__(self, image, position, speed):
-        super().__init__()
-        
-        self.image = pygame.transform.scale(pygame.image.load(image), (65, 75)).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.center = position
-        self.speed = speed
+# Main game loop
+running = True
+clock = pygame.time.Clock()
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Clear the screen with a background color (optional, but good practice)
+    screen.fill((255, 255, 255)) # Fill with white
+
+    # Blit (draw) the image onto the screen at the specified position
+    screen.blit(image_surface, image_rect)
+
+    # Update the display to show the new frame
+    pygame.display.update()
+
+    # Cap the frame rate
+    clock.tick(60)
+
+pygame.quit()
+quit()
 
