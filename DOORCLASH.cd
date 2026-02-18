@@ -11,7 +11,7 @@ pygame. display.set_caption('Start Page')
 
 # Load the image and convert it for optimal performance
 # Use .convert_alpha() if your image has transparency
-image_surface = pygame.image.load('image (2).png').convert_alpha() 
+image_surface = pygame.image.load('startpage.png').convert_alpha() 
 
 # Get the rectangle of the image to help with positioning
 image_rect = image_surface.get_rect()
