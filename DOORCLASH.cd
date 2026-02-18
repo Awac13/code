@@ -1,2 +1,22 @@
 # code
 import pygame
+
+pygame.init()
+
+screen_width = 1200
+screen_height = 600
+
+game_state = "playing"  
+
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("My Pygame Window")
+
+class character(pygame.sprite.Sprite):
+    def __init__(self, image, position, speed):
+        super().__init__()
+        
+        self.image = pygame.transform.scale(pygame.image.load(image), (65, 75)).convert_alpha()
+        self.rect = self.image.get_rect()
+        self.rect.center = position
+        self.speed = speed
+
